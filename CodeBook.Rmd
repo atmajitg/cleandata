@@ -1,0 +1,73 @@
+
+## Data:
+The data can be downloaded from the [USCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) or [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip).
+
+## Data Structure:
+
+The data file consist of the two main folders: 
+1. test
+2. train
+
+The entire dataset is divided between test and training data. The test  folder consist of 30% of the data or 2947 observations and 561 variables. The training data comprises of 70% of the data or 7352 observations and 561 variables.
+
+The test folder consist of the following files:
+
+1. X_test.txt : data 
+2. y_test.txt
+3. Inertial Signals
+4. subject_test.txt
+
+The test folder consist of the following files:
+
+1. X_train.txt
+2. y_train.txt
+3. Inertial Signals
+4. subject_train.txt
+
+The content of each of the files and folders are decribed in detail in the readme.txt file downloaded as a part of the data zip file.
+
+## description of the Script:
+
+The script file called run_analysis. R is divided into 8 subsections as described below:
+
+### Load the necessary Library
+The script under this step loads the dplyr package which assist in manipulating and transforing data.
+
+### Get the train data and label it
+This chunk of script loads the training data, activity data, features data . Applies labels to the same. The code chunk also column binds the data. The column binding is necessary to Merge the data and get a complete dataset.
+
+### Get the test data and label it
+This chunk of script loads the training data, activity data, features data . Applies labels to the same. The code chunk also column binds the data. The column binding is necessary to Merge the data and get a complete dataset.
+
+### Merging the data
+Once we have both the train and test data ready we can merger the two data sets together using the rbind() function in R. 
+
+### extracting the labels the data
+We only require data for mean and standard deviation. Hence, we will use the grepl() function to extract only those column that contain mean and standard deviation as column headers. Finally we generate a new data set using the extracted column called select.all. The select.all is the selected data of all data that was generated in the merging step.
+
+The select.all data consist of 82 columns. We also require the activity and subject columns for further analyzing the data and hence they are also added to the select.all data set.
+
+
+### Adding descriptive names for activity
+We observe that the complete data set called all consist of column that are activity numbers. But, we need to know what those number mean. The data for the description of these fields has been extracted and stored as activity.label. All we need is create a new column with names of the activities. We accomplish this using a loop and a nested if else statements. 
+
+
+### Adding descriptive labels for activity
+We use the sub and gsub functions in R to rename the column headers to make it more descriptive.
+### tidy data
+We will group and summarise the data using the functions in the dplyr package to calculate the average as mentioned in the assignment. 
+
+
+## Description of data files:
+* train.data - contains data from the x_train.txt file
+* activity.train - contains data from the activity file which lists all the activities performed by the individuals in the tarin data set.
+* activity.label - contains the labels for each activity such as walking, laying etc.
+* subject.train - contains a list of all the subjects . Note that there are 30 subjects in toatl.
+* train.data.all - contains all the data required to build a train data set.
+* test.data - Contains data from x_test.txt file.
+* activity.test - - contains data from the activity file which lists all the activities performed by the individuals in the test data set.
+* subject.test -- contains a list of all the subjects . Note that there are 30 subjects in toatl.
+* test.data.all - contains all the data required to build a complete test data set.
+* all - contains 10299 observations which is a merged data from the test and train data.
+* select.all - Consist of data of only the mean and standard deviations. The select.all1, select.all2 and select.all3 are intermediary files used to divide and join the necessary elements of teh data.
+* tidy.data - is a summarized data of all the averages.
