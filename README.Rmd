@@ -1,0 +1,39 @@
+---
+title: "README"
+author: "Atmajit"
+date: "December 5, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## An overview of the extracting and Cleaning data:
+
+This document is a summary of all the steps involved in extracting the data, cleaning the data and transforming the data. The following files are required to perform the task at hand:
+
+1) main.R : Consist of the script that performs all the necessary steps.
+2) CodeBook.Rmd : Consist of a description of the data, variables and steps in transforming the same.
+3) tidy_data.txt : Is the output file
+
+## Steps involved :
+
+The following steps are performed to accomplish the asignment.
+1. created a R project.
+2. Downloaded the data and stored the same in a folder called "data" inside the r project folder.
+3. Read in all the data using read.table() function.
+4. Readin the labels, features and the activity files. These are necessary for processing the data.
+5. Added labels to the data
+6. Verified the dimensions of the data using the dim().
+7. Merged the two data sets - train and test data.
+8. Added the necessary activity labels
+9. Added the necessary Descriptive names
+10. Cleaned the data so that we only have the mean and standard deviation.
+11. Grouped the data to get mean and standard deviation for each subject ofr each activity.
+12. Saved the data.
+
+## Result:
+
+tidy_data.txt file consist of 180 observations and 82 variables.
+
